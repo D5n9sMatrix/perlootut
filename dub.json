@@ -1,0 +1,16 @@
+{
+	"authors": [
+		"D5n9sMatrix"
+	],
+	"copyright": "copyright 2021",
+	"description": "graphic perl plot",
+	"license": "MIT",
+	"name": "perlootut",
+	
+	"dependencies": {
+        "ggplotd": ">=0.4.5"
+	},
+    "subConfigurations": {
+		"ggplotd": "ggplotd-gtk"
+	}
+}

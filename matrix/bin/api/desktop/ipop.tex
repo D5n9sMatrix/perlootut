@@ -1,0 +1,305 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={ipop.r},
+  pdfauthor={denis},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{ipop.r}
+\author{denis}
+\date{2021-07-12}
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#!/usr/bin/r}
+
+\CommentTok{\# However the data are represented, whether in an array or a network, the}
+\CommentTok{\# analysis of the data is often facilitated by using “association” matrices. The}
+\CommentTok{\# most familiar type of association matrix is perhaps a correlation matrix. We}
+\CommentTok{\# will encounter and use other types of association matrices in Chapter 8.}
+
+\CommentTok{\# In this chapter we discuss a wide range of basic topics related to vectors }
+\CommentTok{\# of real}
+\CommentTok{\# numbers. Some of the properties carry over to vectors over other fields, such}
+\CommentTok{\# as complex numbers, but the reader should not assume this. Occasionally, for}
+\CommentTok{\# emphasis, we will refer to “real” vectors or “real” vector spaces, but unless }
+\CommentTok{\# it}
+\CommentTok{\# is stated otherwise, we are assuming the vectors and vector spaces are real.}
+\CommentTok{\# The topics and the properties of vectors and vector spaces that we emphasize}
+\CommentTok{\# are motivated by applications in the data sciences.}
+\NormalTok{real }\OtherTok{\textless{}{-}} \FunctionTok{vector}\NormalTok{(}\AttributeTok{mode =} \StringTok{"logical"}\NormalTok{, }\AttributeTok{length =}\NormalTok{ 0L)}
+\NormalTok{real}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## logical(0)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Abstract}
+\CommentTok{\# kernlab is an extensible package for kernel{-}based machine learning methods }
+\CommentTok{\# in R. It takes}
+\CommentTok{\# advantage of R’s new S4 object model and provides a framework for creating }
+\CommentTok{\# and using kernel{-}}
+\CommentTok{\# based algorithms. The package contains dot product primitives (kernels), }
+\CommentTok{\# implementations}
+\CommentTok{\# of support vector machines and the relevance vector machine, Gaussian }
+\CommentTok{\# processes, a ranking}
+\CommentTok{\# algorithm, kernel PCA, kernel CCA, kernel feature analysis, online kernel }
+\CommentTok{\# methods and a}
+\CommentTok{\# spectral clustering algorithm. Moreover it provides a general purpose }
+\CommentTok{\# quadratic programming}
+\CommentTok{\# solver, and an incomplete Chomsky decomposition method.}
+\CommentTok{\# Keywords: kernel methods, support vector machines, quadratic programming, }
+\CommentTok{\# ranking, clustering,}
+\CommentTok{\# S4, R.}
+\NormalTok{n }\OtherTok{=} \DecValTok{1}
+\NormalTok{S4 }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(n, }\AttributeTok{mean =} \DecValTok{0}\NormalTok{, }\AttributeTok{sd =} \DecValTok{1}\NormalTok{)}
+\NormalTok{r }\OtherTok{=} \DecValTok{1}
+\NormalTok{CCA }\OtherTok{\textless{}{-}} \FunctionTok{kernel}\NormalTok{(}\AttributeTok{coef =} \StringTok{"daniell"}\NormalTok{, }\AttributeTok{m =} \DecValTok{2}\NormalTok{, r, }\AttributeTok{name =} \StringTok{"unknown"}\NormalTok{)}
+\NormalTok{S4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.015126
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{CCA}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Daniell(2) 
+## coef[-2] = 0.2
+## coef[-1] = 0.2
+## coef[ 0] = 0.2
+## coef[ 1] = 0.2
+## coef[ 2] = 0.2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 1. Introduction}
+\CommentTok{\# Machine learning is all about extracting structure from data, but it is often }
+\CommentTok{\# difficult to solve prob{-}}
+\CommentTok{\# lets like classification, regression and clustering in the space in which the }
+\CommentTok{\# underlying observations}
+\CommentTok{\# have been made.}
+\CommentTok{\# Kernel{-}based learning methods use an implicit mapping of the input data into }
+\CommentTok{\# a high dimensional}
+\CommentTok{\# feature space defined by a kernel function, i.e., a function returning the }
+\CommentTok{\# inner product hΦ(x), Φ(y)i}
+\CommentTok{\# between the images of two data points x, y in the feature space. The learning }
+\CommentTok{\# then takes place}
+\CommentTok{\# in the feature space, provided the learning algorithm can be entirely }
+\CommentTok{\# rewritten so that the data}
+\CommentTok{\# points only appear inside dot products with other points. This is often }
+\CommentTok{\# referred to as the “kernel}
+\CommentTok{\# trick” (Schölkopf and Scold 2002). More precisely, if a projection }
+\CommentTok{\# V : X → H is used, the dot}
+\CommentTok{\# product hp(x), V(y)i can be represented by a kernel function k}
+\CommentTok{\# k(x, y) = hp(x), V(y)i,}
+\NormalTok{k }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(hp)\{}
+\NormalTok{  i }\OtherTok{\textless{}{-}} \DecValTok{0}
+\NormalTok{  hp }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FunctionTok{list}\NormalTok{(i), }\DecValTok{0}\NormalTok{, i)}
+
+  
+  \FunctionTok{c}\NormalTok{(hp, i)}
+\NormalTok{\}}
+\FunctionTok{k}\NormalTok{(hp)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## [1] 0
+## 
+## [[2]]
+## [1] 0
+## 
+## [[3]]
+## [1] 0
+## 
+## [[4]]
+## [1] 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# which is computationally simpler than explicitly projecting x and y into the }
+\CommentTok{\# feature space H.}
+\CommentTok{\# One interesting property of kernel{-}based systems is that, once a valid kernel }
+\CommentTok{\# function has been}
+\CommentTok{\# selected, one can practically work in spaces of any dimension without paying }
+\CommentTok{\# any computational}
+\CommentTok{\# cost, since feature mapping is never effectively performed. In fact, one does }
+\CommentTok{\# not even need to know}
+\CommentTok{\# which features are being used.}
+\CommentTok{\# Another advantage is the that one can design and use a kernel for a particular }
+\CommentTok{\# problem that could be}
+\CommentTok{\# applied directly to the data without the need for a feature extraction }
+\CommentTok{\# process. This is particularly}
+\CommentTok{\# important in problems where a lot of structure of the data is lost by the }
+\CommentTok{\# feature extraction process}
+\CommentTok{\# (e.g., text processing). The inherent popularity of kernel{-}based learning }
+\CommentTok{\# methods allows one to}
+\CommentTok{\# use any valid kernel on a kernel{-}based algorithm.}
+\NormalTok{feature }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\AttributeTok{type =} \FunctionTok{c}\NormalTok{(}\StringTok{"O"}\NormalTok{, }\StringTok{"I"}\NormalTok{, }\StringTok{"F"}\NormalTok{, }\StringTok{"M"}\NormalTok{, }\StringTok{"2"}\NormalTok{))}
+\NormalTok{feature}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       type1 type2 type3 type4 type5 
+##  "10"   "O"   "I"   "F"   "M"   "2"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 1.1. Software review}
+\CommentTok{\# The most prominent kernel based learning algorithm is without doubt the }
+\CommentTok{\# support vector machine2}
+\CommentTok{\# kernlab – An S4 Package for Kernel Methods in R}
+\CommentTok{\# (SVM), so the existence of many support vector machine packages comes as }
+\CommentTok{\# little surprise. Most}
+\CommentTok{\# of the existing SVM software is written in C or C++, e.g. the award winning }
+\CommentTok{\# libsvm 1 (Chang and}
+                                                                                      
+\CommentTok{\# Lin 2001), Sunlight 2 (Joachims 1999), SVMTorch 3 , Royal Holloway Support }
+\CommentTok{\# Vector Machines 4 ,}
+\CommentTok{\# myS 5 , and M{-}SVM 6 with many packages providing interfaces to }
+\CommentTok{\# MATLAB (such as libsvm),}
+\CommentTok{\# and even some native MATLAB toolboxes 7 8 9 .}
+\CommentTok{\# Putting SVM specific software aside and considering the abundance of other }
+\CommentTok{\# kernel{-}based ago{-}}
+\CommentTok{\#  rhythms published nowadays, there is little software available implementing }
+\CommentTok{\# a wider range of kernel}
+\CommentTok{\# methods with some exceptions like the Spider 10 software which provides }
+\CommentTok{\# a MATLAB interface to}
+\CommentTok{\# various C/C++ SVM libraries and MATLAB implementations of various }
+\CommentTok{\# kernel{-}based algorithms,}
+\CommentTok{\# Torch 11 which also includes more traditional machine learning algorithms, }
+\CommentTok{\# and the occasional}
+\CommentTok{\# MATLAB or C program found on a personal web page where an author includes }
+\CommentTok{\# code from a}
+\CommentTok{\# published paper.}
+\NormalTok{kernlab}\SpecialCharTok{::}\NormalTok{.\_\_C\_\_ipop}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Class "ipop" [package "kernlab"]
+## 
+## Slots:
+##                                     
+## Name:     primal      dual       how
+## Class:    vector   numeric character
+\end{verbatim}
+
+\end{document}
